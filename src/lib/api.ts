@@ -288,11 +288,21 @@ export const getCars = (
     }
     
     if (filters.minPrice) {
-      filteredCars = filteredCars.filter(car => car.price >= filters.minPrice);
+      if (filters.minPrice !== undefined) {
+        filteredCars = filteredCars.filter(
+          (car) =>
+            filters.minPrice !== undefined && car.price >= filters.minPrice
+        );
+      }
     }
-    
+
     if (filters.maxPrice) {
-      filteredCars = filteredCars.filter(car => car.price <= filters.maxPrice);
+      if (filters.maxPrice !== undefined) {
+        filteredCars = filteredCars.filter(
+          (car) =>
+            filters.maxPrice !== undefined && car.price <= filters.maxPrice
+        );
+      }
     }
     
     if (filters.fuelType) {
